@@ -1,25 +1,21 @@
-# Poganjalec poslov
+# Business driver
 
-## Navodila 
+## Instructions
 
-Napišite skripto pozeni_posle, ki v trenutni poti in podpoteh poišče vse posle in jih izvede.
+Write a run_jobs script that finds all jobs in the current path and subpaths and executes them.
 
-Veljavni posli so bash skripte poimenovane po shemi 'posel_<ime\>.sh'. Ime je lahko poljuben niz, ki je del veljavnega imena zbirke (npr. vsebuje lahko presledke, ne more pa vsebovati znaka /). Vsak posel mora v prvi vrsti imeti komentar, ki pove, da so to bash skripte: '#!/bin/bash'.
+Valid jobs are bash scripts named according to the scheme 'job_<name>.sh'. The name can be any string that is part of a valid collection name (eg it can contain spaces, but cannot contain the / character). Each job must first have a comment saying that these are bash scripts: '#!/bin/bash'.
 
-Posli nimajo nastavljenega bita za izvajanje, pognati jih moramo eksplicitno z ukazom bash.
+Jobs don't have the run bit set, we have to run them explicitly with the bash command.
 
-Zagon posameznega posla naj se izvede znotraj njegove poti.
-To lahko dosežete tako, da si zapomnite izhodiščno delovno pot, nato se pomaknete v pot ciljnega posla, ga poženete, nato pa se pomaknete nazaj v izhodiščno pot.
+The launch of an individual job should be carried out within its path. You can accomplish this by remembering the starting job path, then navigating to the destination job path, running it, then navigating back to the starting job path.
 
-Izhod posameznega posla naj se zapiše v 'posel_<ime\>.out' v isti poti kot sam posel.
-V kolikor ta zbirka že obstaja, naj se vsebina prepiše.
+The output of an individual transaction should be written in 'job_<name>.out' in the same path as the transaction itself. If this collection already exists, the content should be overwritten.
 
-Vsak posel bo na standardni izhod v zadnji vrstici izpisal 'Ok' kadar se je posel izvedel uspešno ali 'Fail' kadar se ni.
-Skripta naj na koncu izpiše seznam neuspešnih poslov.
+Each transaction will print 'Ok' on the standard output in the last line when the transaction was executed successfully or 'Fail' when it did not. The script should output a list of failed trades at the end.
+## Examples of startups
 
-## Primeri zagonov
-
-Primer preprostega zagona in izpisa:
+An example of a simple run and output:
 
 ```bash
 $ find .
@@ -39,18 +35,20 @@ $ find .
 ./posel_p1.sh
 ```
 
-## Kaj morate implementirati pri tej nalogi?
+## Functionality of the solution
 
-+ iskanje poslov za zagon
-    + ne sme izbrati poslov, katerih ime se ne ujema s predpisano obliko
-    + ne sme izbrati map, katerih ime se ujema z obliko
-    + ne sme izbrati poslov, katerih prva vrstica ne vsebuje ustreznega komentarja
-    + imena poslov lahko imajo presledke
-    + poti lahko imajo presledke
-+ zagon posla
-    + zagon znotraj poti posla
-    + izpis posla v ustrezno izhodno datoteko
-    + preverjanje izhoda posla
-+ izpis neuspešnih poslov
+
++ finding jobs to start
+    + may not select jobs whose name does not match the prescribed format
+    + it must not select folders whose name matches the format
+    + may not select trades whose first line does not contain an appropriate comment
+    + job names can have spaces
+    + paths can have spaces
++ startup
+    + startup within the job path
+    + output the job to the appropriate output file
+    + checking job output
++ listing of failed jobs
+
 
 
